@@ -1,0 +1,34 @@
+<script setup>
+import Header from '../../components/Header.vue';
+import { useAuthStore } from '../../stores/auth';
+
+
+const authStore = useAuthStore();
+// Maneja logout desde layout
+const logoutUser = () => { authStore.logoutUser(); };
+</script>
+
+<template>
+  <v-app>
+    <!-- Header siempre visible -->
+    <Header @logout="logoutUser" />
+
+    <!-- Main renderizando rutas hijas -->
+    <v-main class="main-bg d-flex align-center justify-center bg-grey-lighten-4" style="min-height: 100vh;">
+      <router-view />
+    </v-main>
+  </v-app>
+</template>
+
+<style scoped>
+.main-bg {
+  min-height: 100vh;
+  background-color: hsla(161, 77%, 83%, 1);
+  background-image: radial-gradient(circle at 7% 81%, hsla(172, 91%, 91%, 1) 16%, transparent 53%),
+    radial-gradient(circle at 5% 1%, hsla(238, 76%, 61%, 1) 7%, transparent 84%),
+    radial-gradient(circle at 39% 52%, hsla(137, 93%, 64%, 1) 6%, transparent 68%),
+    radial-gradient(circle at 11% 29%, hsla(201, 97%, 75%, 1) 8%, transparent 74%),
+    radial-gradient(circle at 90% 50%, hsla(106, 94%, 89%, 1) 2%, transparent 85%);
+  background-blend-mode: normal;
+}
+</style>
