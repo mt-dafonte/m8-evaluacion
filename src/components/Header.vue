@@ -40,7 +40,7 @@ const goToProjects = () => router.push({ name: 'projects' });
 const logout = async () => {
     // 1. Llama a la acción del store (debería poner isAuthenticated a false)
     await authStore.logoutUser();
-
+    router.push('/');
 };
 </script>
 
